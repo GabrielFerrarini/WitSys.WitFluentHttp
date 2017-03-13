@@ -1,0 +1,550 @@
+<?xml version="1.0"?>
+<doc>
+    <assembly>
+        <name>WitSys.WitFluentHttp</name>
+    </assembly>
+    <members>
+        <member name="T:WitSys.WitFluentHttp.ContentType">
+            <summary>
+            Indicates the type of content being sent with the request
+            </summary>
+        </member>
+        <member name="F:WitSys.WitFluentHttp.ContentType.Text">
+            <summary>
+            The content is pure text
+            </summary>
+        </member>
+        <member name="F:WitSys.WitFluentHttp.ContentType.ApplicationJson">
+            <summary>
+            The content is in json format
+            </summary>
+        </member>
+        <member name="F:WitSys.WitFluentHttp.ContentType.JavaScript">
+            <summary>
+            The content is Javascript
+            </summary>
+        </member>
+        <member name="F:WitSys.WitFluentHttp.ContentType.ApplicationXML">
+            <summary>
+            The content is in XML format
+            </summary>
+        </member>
+        <member name="F:WitSys.WitFluentHttp.ContentType.TextXML">
+            <summary>
+            The content is in XML format
+            </summary>
+        </member>
+        <member name="F:WitSys.WitFluentHttp.ContentType.HTML">
+            <summary>
+            The content is in HTML format
+            </summary>
+        </member>
+        <member name="T:WitSys.WitFluentHttp.HttpVerb">
+            <summary>
+            Indicates the HTTP VERB of the request
+            </summary>
+        </member>
+        <member name="F:WitSys.WitFluentHttp.HttpVerb.Get">
+            <summary>
+            Performs a GET
+            </summary>
+        </member>
+        <member name="F:WitSys.WitFluentHttp.HttpVerb.Post">
+            <summary>
+            Performs a POST
+            </summary>
+        </member>
+        <member name="F:WitSys.WitFluentHttp.HttpVerb.Put">
+            <summary>
+            Performs a PUT
+            </summary>
+        </member>
+        <member name="F:WitSys.WitFluentHttp.HttpVerb.Patch">
+            <summary>
+            Performs a PATCH
+            </summary>
+        </member>
+        <member name="F:WitSys.WitFluentHttp.HttpVerb.Delete">
+            <summary>
+            Performs a DELETE
+            </summary>
+        </member>
+        <member name="T:WitSys.WitFluentHttp.IFluentInterface">
+            <summary>
+            Interface that is used to build fluent interfaces and hides methods declared by <see cref="T:System.Object"/> from IntelliSense.
+            </summary>
+            <remarks>
+            Code that consumes implementations of this interface should expect one of two things:
+            <list type = "number">
+              <item>When referencing the interface from within the same solution (project reference), you will still see the methods this interface is meant to hide.</item>
+              <item>When referencing the interface through the compiled output assembly (external reference), the standard Object methods will be hidden as intended.</item>
+            </list>
+            See http://bit.ly/ifluentinterface for more information.
+            </remarks>
+        </member>
+        <member name="M:WitSys.WitFluentHttp.IFluentInterface.GetType">
+            <summary>
+            Redeclaration that hides the <see cref="M:System.Object.GetType"/> method from IntelliSense.
+            </summary>
+        </member>
+        <member name="M:WitSys.WitFluentHttp.IFluentInterface.GetHashCode">
+            <summary>
+            Redeclaration that hides the <see cref="M:System.Object.GetHashCode"/> method from IntelliSense.
+            </summary>
+        </member>
+        <member name="M:WitSys.WitFluentHttp.IFluentInterface.ToString">
+            <summary>
+            Redeclaration that hides the <see cref="M:System.Object.ToString"/> method from IntelliSense.
+            </summary>
+        </member>
+        <member name="M:WitSys.WitFluentHttp.IFluentInterface.Equals(System.Object)">
+            <summary>
+            Redeclaration that hides the <see cref="M:System.Object.Equals(System.Object)"/> method from IntelliSense.
+            </summary>
+        </member>
+        <member name="T:WitSys.WitFluentHttp.IWitHttpClient">
+            <summary>
+            The basic interface to expose request information
+            </summary>
+        </member>
+        <member name="P:WitSys.WitFluentHttp.IWitHttpClient.Verb">
+            <summary>
+            The HTTP verb of the request
+            </summary>
+        </member>
+        <member name="P:WitSys.WitFluentHttp.IWitHttpClient.BaseAddress">
+            <summary>
+            The base assdress of the request
+            </summary>
+        </member>
+        <member name="P:WitSys.WitFluentHttp.IWitHttpClient.AccessToken">
+            <summary>
+            The access token sent with the request, if required
+            </summary>
+        </member>
+        <member name="P:WitSys.WitFluentHttp.IWitHttpClient.BasicAuthentication">
+            <summary>
+            The basic authentication info sent with the request, if required
+            </summary>
+        </member>
+        <member name="P:WitSys.WitFluentHttp.IWitHttpClient.ContentType">
+            <summary>
+            The type of the content sent with the request, if required
+            </summary>
+        </member>
+        <member name="P:WitSys.WitFluentHttp.IWitHttpClient.Headers">
+            <summary>
+            A list of the header values sent with the request. Access token and Basic authentication will also be in here
+            </summary>
+        </member>
+        <member name="P:WitSys.WitFluentHttp.IWitHttpClient.BodyText">
+            <summary>
+            The text representation of the body content sent with the request
+            </summary>
+        </member>
+        <member name="P:WitSys.WitFluentHttp.IWitHttpClient.BodyValues">
+            <summary>
+            A list of body values sent with the request
+            </summary>
+        </member>
+        <member name="M:WitSys.WitFluentHttp.IWitHttpClient.ExecuteAsync">
+            <summary>
+            The method that executes the specified VERB
+            </summary>
+        </member>
+        <member name="T:WitSys.WitFluentHttp.IAddress">
+            <summary>
+            Entry point for fluent methods
+            </summary>
+        </member>
+        <member name="M:WitSys.WitFluentHttp.IAddress.WithAddress(System.Uri)">
+            <summary>
+            Chaining method accepting an Uri object
+            </summary>
+            <param name="baseAddress">The Uri for the request address</param>
+            <returns>The caller object</returns>
+        </member>
+        <member name="M:WitSys.WitFluentHttp.IAddress.WithAddress(System.String)">
+            <summary>
+            Chaining method accepting an string value
+            </summary>
+            <param name="baseAddress">The String for the request address</param>
+            <returns>The caller object</returns>
+        </member>
+        <member name="T:WitSys.WitFluentHttp.IAuthOrHeaderOrContentOrBodyOrVerb">
+            <summary>
+            Fluent interface
+            </summary>
+        </member>
+        <member name="M:WitSys.WitFluentHttp.IAuthOrHeaderOrContentOrBodyOrVerb.WithBasicAuthentication(System.String)">
+            <summary>
+            Chaining method accepting an string value containing the basic authentication value
+            </summary>
+            <param name="basicAuthentication">The basic authentication value</param>
+            <returns>The caller object</returns>
+        </member>
+        <member name="M:WitSys.WitFluentHttp.IAuthOrHeaderOrContentOrBodyOrVerb.WithBearerAccessToken(System.String)">
+            <summary>
+            Chaining method accepting an string value containing the token value
+            </summary>
+            <param name="accessToken">The token value</param>
+            <returns>The caller object</returns>
+        </member>
+        <member name="T:WitSys.WitFluentHttp.IHeaderOrContentOrBodyOrVerb">
+            <summary>
+            Fluent interface
+            </summary>
+        </member>
+        <member name="M:WitSys.WitFluentHttp.IHeaderOrContentOrBodyOrVerb.WithHeader(System.String,System.String)">
+            <summary>
+            Chaining method accepting header values to be sent with the request
+            </summary>
+            <param name="key">The key</param>
+            <param name="value">The value</param>
+            <returns>The caller object</returns>
+        </member>
+        <member name="M:WitSys.WitFluentHttp.IHeaderOrContentOrBodyOrVerb.WithContentType(WitSys.WitFluentHttp.ContentType)">
+            <summary>
+            Chaining method accepting the ContentType of the value being sent with the request
+            </summary>
+            <param name="contentType">The ContentType value</param>
+            <returns>The caller object</returns>
+        </member>
+        <member name="T:WitSys.WitFluentHttp.IBodyValueOrVerb">
+            <summary>
+            Fluent interface
+            </summary>
+        </member>
+        <member name="M:WitSys.WitFluentHttp.IBodyValueOrVerb.WithBodyValue(System.String,System.String)">
+            <summary>
+            Chaining method accepting the body values to be sent with the request
+            </summary>
+            <param name="key">The key</param>
+            <param name="value">The value</param>
+            <returns>The caller object</returns>
+        </member>
+        <member name="T:WitSys.WitFluentHttp.IBodyTextOrVerb">
+            <summary>
+            Fluent interface
+            </summary>
+        </member>
+        <member name="M:WitSys.WitFluentHttp.IBodyTextOrVerb.WithBodyObject(System.Object)">
+            <summary>
+            Chaining method accepting an object to be parsed and sent with the request
+            </summary>
+            <param name="bodyObject">The object to be sent</param>
+            <returns>The caller object</returns>
+        </member>
+        <member name="M:WitSys.WitFluentHttp.IBodyTextOrVerb.WithBodyText(System.String)">
+            <summary>
+            Chaining method accepting a body text value to be sent with the request
+            </summary>
+            <param name="bodyText">The body text to be sent</param>
+            <returns>The caller object</returns>
+        </member>
+        <member name="T:WitSys.WitFluentHttp.IVerb">
+            <summary>
+            Fluent interface
+            </summary>
+        </member>
+        <member name="M:WitSys.WitFluentHttp.IVerb.Post">
+            <summary>
+            Executes the post
+            </summary>
+            <returns>The caller object</returns>
+        </member>
+        <member name="M:WitSys.WitFluentHttp.IVerb.Post(System.Net.Http.HttpMessageHandler)">
+            <summary>
+            /// Executes the post
+            </summary>
+            <param name="httpMessageHandler">A custom HttpMessageHandler object</param>
+            <returns>The caller object</returns>
+        </member>
+        <member name="M:WitSys.WitFluentHttp.IVerb.Get">
+            <summary>
+            Executes the get
+            </summary>
+            <returns>The caller object</returns>
+        </member>
+        <member name="M:WitSys.WitFluentHttp.IVerb.Get(System.Net.Http.HttpMessageHandler)">
+            <summary>
+            /// Executes the get
+            </summary>
+            <param name="httpMessageHandler">A custom HttpMessageHandler object</param>
+            <returns>The caller object</returns>
+        </member>
+        <member name="M:WitSys.WitFluentHttp.IVerb.Put">
+            <summary>
+            Executes the put
+            </summary>
+            <returns>The caller object</returns>
+        </member>
+        <member name="M:WitSys.WitFluentHttp.IVerb.Put(System.Net.Http.HttpMessageHandler)">
+            <summary>
+            /// Executes the put
+            </summary>
+            <param name="httpMessageHandler">A custom HttpMessageHandler object</param>
+            <returns>The caller object</returns>
+        </member>
+        <member name="M:WitSys.WitFluentHttp.IVerb.Patch">
+            <summary>
+            Executes the patch
+            </summary>
+            <returns>The caller object</returns>
+        </member>
+        <member name="M:WitSys.WitFluentHttp.IVerb.Patch(System.Net.Http.HttpMessageHandler)">
+            <summary>
+            /// Executes the patch
+            </summary>
+            <param name="httpMessageHandler">A custom HttpMessageHandler object</param>
+            <returns>The caller object</returns>
+        </member>
+        <member name="M:WitSys.WitFluentHttp.IVerb.Delete">
+            <summary>
+            Executes the delete
+            </summary>
+            <returns>The caller object</returns>
+        </member>
+        <member name="M:WitSys.WitFluentHttp.IVerb.Delete(System.Net.Http.HttpMessageHandler)">
+            <summary>
+            /// Executes the delete
+            </summary>
+            <param name="httpMessageHandler">A custom HttpMessageHandler object</param>
+            <returns>The caller object</returns>
+        </member>
+        <member name="T:WitSys.WitFluentHttp.WitHttpClient">
+            <summary>
+            The fluent object
+            </summary>
+        </member>
+        <member name="P:WitSys.WitFluentHttp.WitHttpClient.Verb">
+            <summary>
+            The HTTP verb of the request
+            </summary>
+        </member>
+        <member name="P:WitSys.WitFluentHttp.WitHttpClient.BaseAddress">
+            <summary>
+            The base assdress of the request
+            </summary>
+        </member>
+        <member name="P:WitSys.WitFluentHttp.WitHttpClient.AccessToken">
+            <summary>
+            The access token sent with the request, if required
+            </summary>
+        </member>
+        <member name="P:WitSys.WitFluentHttp.WitHttpClient.BasicAuthentication">
+            <summary>
+            The basic authentication info sent with the request, if required
+            </summary>
+        </member>
+        <member name="P:WitSys.WitFluentHttp.WitHttpClient.ContentType">
+            <summary>
+            The type of the content sent with the request, if required
+            </summary>
+        </member>
+        <member name="P:WitSys.WitFluentHttp.WitHttpClient.Headers">
+            <summary>
+            A list of the header values sent with the request. Access token and Basic authentication will also be in here
+            </summary>
+        </member>
+        <member name="P:WitSys.WitFluentHttp.WitHttpClient.BodyText">
+            <summary>
+            The text representation of the body content sent with the request
+            </summary>
+        </member>
+        <member name="P:WitSys.WitFluentHttp.WitHttpClient.BodyValues">
+            <summary>
+            A list of body values sent with the request
+            </summary>
+        </member>
+        <member name="M:WitSys.WitFluentHttp.WitHttpClient.ExecuteAsync">
+            <summary>
+            The method that executes the specified VERB
+            </summary>
+        </member>
+        <member name="M:WitSys.WitFluentHttp.WitHttpClient.WithAddress(System.Uri)">
+            <summary>
+            Chaining method accepting an Uri object
+            </summary>
+            <param name="baseAddress">The Uri for the request address</param>
+            <returns>The caller object</returns>
+        </member>
+        <member name="M:WitSys.WitFluentHttp.WitHttpClient.WithAddress(System.String)">
+            <summary>
+            Chaining method accepting an string value
+            </summary>
+            <param name="baseAddress">The String for the request address</param>
+            <returns>The caller object</returns>
+        </member>
+        <member name="M:WitSys.WitFluentHttp.WitHttpClient.WithBasicAuthentication(System.String)">
+            <summary>
+            Chaining method accepting an string value containing the basic authentication value
+            </summary>
+            <param name="basicAuthentication">The basic authentication value</param>
+            <returns>The caller object</returns>
+        </member>
+        <member name="M:WitSys.WitFluentHttp.WitHttpClient.WithBearerAccessToken(System.String)">
+            <summary>
+            Chaining method accepting an string value containing the token value
+            </summary>
+            <param name="accessToken">The token value</param>
+            <returns>The caller object</returns>
+        </member>
+        <member name="M:WitSys.WitFluentHttp.WitHttpClient.WithHeader(System.String,System.String)">
+            <summary>
+            Chaining method accepting header values to be sent with the request
+            </summary>
+            <param name="key">The key</param>
+            <param name="value">The value</param>
+            <returns>The caller object</returns>
+        </member>
+        <member name="M:WitSys.WitFluentHttp.WitHttpClient.WithContentType(WitSys.WitFluentHttp.ContentType)">
+            <summary>
+            Chaining method accepting the ContentType of the value being sent with the request
+            </summary>
+            <param name="contentType">The ContentType value</param>
+            <returns>The caller object</returns>
+        </member>
+        <member name="M:WitSys.WitFluentHttp.WitHttpClient.WithBodyValue(System.String,System.String)">
+            <summary>
+            Chaining method accepting the body values to be sent with the request
+            </summary>
+            <param name="key">The key</param>
+            <param name="value">The value</param>
+            <returns>The caller object</returns>
+        </member>
+        <member name="M:WitSys.WitFluentHttp.WitHttpClient.WithBodyObject(System.Object)">
+            <summary>
+            Chaining method accepting an object to be parsed and sent with the request
+            </summary>
+            <param name="bodyObject">The object to be sent</param>
+            <returns>The caller object</returns>
+        </member>
+        <member name="M:WitSys.WitFluentHttp.WitHttpClient.WithBodyText(System.String)">
+            <summary>
+            Chaining method accepting a body text value to be sent with the request
+            </summary>
+            <param name="bodyText">The body text to be sent</param>
+            <returns>The caller object</returns>
+        </member>
+        <member name="M:WitSys.WitFluentHttp.WitHttpClient.Post">
+            <summary>
+            Executes the post
+            </summary>
+            <returns>The caller object</returns>
+        </member>
+        <member name="M:WitSys.WitFluentHttp.WitHttpClient.Post(System.Net.Http.HttpMessageHandler)">
+            <summary>
+            /// Executes the post
+            </summary>
+            <param name="httpMessageHandler">A custom HttpMessageHandler object</param>
+            <returns>The caller object</returns>
+        </member>
+        <member name="M:WitSys.WitFluentHttp.WitHttpClient.Get">
+            <summary>
+            Executes the get
+            </summary>
+            <returns>The caller object</returns>
+        </member>
+        <member name="M:WitSys.WitFluentHttp.WitHttpClient.Get(System.Net.Http.HttpMessageHandler)">
+            <summary>
+            /// Executes the get
+            </summary>
+            <param name="httpMessageHandler">A custom HttpMessageHandler object</param>
+            <returns>The caller object</returns>
+        </member>
+        <member name="M:WitSys.WitFluentHttp.WitHttpClient.Put">
+            <summary>
+            Executes the put
+            </summary>
+            <returns>The caller object</returns>
+        </member>
+        <member name="M:WitSys.WitFluentHttp.WitHttpClient.Put(System.Net.Http.HttpMessageHandler)">
+            <summary>
+            /// Executes the put
+            </summary>
+            <param name="httpMessageHandler">A custom HttpMessageHandler object</param>
+            <returns>The caller object</returns>
+        </member>
+        <member name="M:WitSys.WitFluentHttp.WitHttpClient.Patch">
+            <summary>
+            Executes the patch
+            </summary>
+            <returns>The caller object</returns>
+        </member>
+        <member name="M:WitSys.WitFluentHttp.WitHttpClient.Patch(System.Net.Http.HttpMessageHandler)">
+            <summary>
+            /// Executes the patch
+            </summary>
+            <param name="httpMessageHandler">A custom HttpMessageHandler object</param>
+            <returns>The caller object</returns>
+        </member>
+        <member name="M:WitSys.WitFluentHttp.WitHttpClient.Delete">
+            <summary>
+            Executes the delete
+            </summary>
+            <returns>The caller object</returns>
+        </member>
+        <member name="M:WitSys.WitFluentHttp.WitHttpClient.Delete(System.Net.Http.HttpMessageHandler)">
+            <summary>
+            /// Executes the delete
+            </summary>
+            <param name="httpMessageHandler">A custom HttpMessageHandler object</param>
+            <returns>The caller object</returns>
+        </member>
+        <member name="T:WitSys.WitFluentHttp.WitHttpClientFactory">
+            <summary>
+            A factory class for the WitHttpClient class, returned as an IAddress interface
+            </summary>
+        </member>
+        <member name="P:WitSys.WitFluentHttp.WitHttpClientFactory.Instance">
+            <summary>
+            The static object to be used by all callers
+            </summary>
+        </member>
+        <member name="M:WitSys.WitFluentHttp.WitHttpClientFactory.CreateInstanceOfT">
+            <summary>
+            Creates an instance of WitHttpClientFactory via reflection since WitHttpClientFactory's constructor is expected to be private./>
+            </summary>
+            <returns>An instance of WitHttpClientFactory</returns>
+        </member>
+        <member name="M:WitSys.WitFluentHttp.WitHttpClientFactory.Create">
+            <summary>
+            Creates an instance of WitHttpClient
+            </summary>
+            <returns></returns>
+        </member>
+        <member name="T:WitSys.WitFluentHttp.WitHttpResponse">
+            <summary>
+            The class type used to parse the http responses in a more convinient way
+            </summary>
+        </member>
+        <member name="P:WitSys.WitFluentHttp.WitHttpResponse.StatusCode">
+            <summary>
+            The response status code
+            </summary>
+        </member>
+        <member name="P:WitSys.WitFluentHttp.WitHttpResponse.Content">
+            <summary>
+            The parsed response body, read for reading
+            </summary>
+        </member>
+        <member name="P:WitSys.WitFluentHttp.WitHttpResponse.HttpResponseMessage">
+            <summary>
+            The original HttpResponseMessage for more advanced inspection
+            </summary>
+        </member>
+        <member name="P:WitSys.WitFluentHttp.WitHttpResponse.ResquestedUrl">
+            <summary>
+            The original requested url
+            </summary>
+        </member>
+        <member name="M:WitSys.WitFluentHttp.WitHttpResponse.#ctor(System.Net.Http.HttpResponseMessage,System.String)">
+            <summary>
+            Default constructor
+            </summary>
+            <param name="responseMessage"></param>
+            <param name="requestedUrl"></param>
+        </member>
+    </members>
+</doc>

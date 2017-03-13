@@ -2,6 +2,20 @@
 
   <PropertyGroup>
     <TargetFramework>netstandard1.6</TargetFramework>
+    <PackageId>WitSys.WitFluentHttp</PackageId>
+    <PackageVersion>1.0.0</PackageVersion>
+    <Authors>Gabriel Ferrarini</Authors>
+    <Description>A simple Fluent Http Client Library</Description>
+    <PackageRequireLicenseAcceptance>false</PackageRequireLicenseAcceptance>
+    <PackageReleaseNotes>First release</PackageReleaseNotes>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <DocumentationFile></DocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|AnyCPU'">
+    <DocumentationFile>WitSys.WitFluentHttp.xml</DocumentationFile>
   </PropertyGroup>
 
   <ItemGroup>
